@@ -1,0 +1,163 @@
+/* SCREEN BACKGROUND */
+.orders-screen {
+  padding: 20px;
+  background: linear-gradient(to bottom, #16bbff, #0091e6);
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* TABS */
+.tabs-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 10px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  font-size: 15px;
+  color: #f1f5f7;
+  cursor: pointer;
+  font-weight: 500;
+  backdrop-filter: blur(3px);
+  transition: 0.2s;
+}
+
+.tab-btn.active {
+  background: #ffffff;
+  color: #0a5fa8;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+}
+
+/* SEARCH BOX */
+.search-box {
+  margin-top: 10px;
+  background: white;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 16px;
+  border: none;
+  outline: none;
+  background: #fff;
+  font-size: 15px;
+}
+
+.search-btn {
+  width: 60px;
+  background: #fff;
+  color: white;
+  border: none;
+  height: 100%;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* TABLE HEADER */
+.table-header {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  font-weight: 600;
+  color: #35527a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+/* Container makes table horizontally scrollable */
+.table-wrapper {
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* The table header */
+.table-header {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(9, 160px); /* FIXED widths for mobile */
+  font-weight: 600;
+  color: #35527a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  min-width: max-content; /* prevents squishing */
+}
+
+/* Optional: Smooth scroll on mobile */
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #bcd8f0;
+  border-radius: 10px;
+}
+
+/* DESKTOP DEFAULT */
+.table-scroll {
+  overflow-x: visible;
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* TABLE HEADER */
+.table-header {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  font-weight: 500;
+  color: #35527a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* MOBILE FIX — activate scroll only below 768px */
+@media (max-width: 768px) {
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-header {
+    min-width: 900px; /* minimum width so mobile can scroll */
+    grid-template-columns: repeat(9, 120px); /* each column fixed for mobile */
+  }
+
+  /* Optional: scrollbar styling */
+  .table-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .table-scroll::-webkit-scrollbar-thumb {
+    background: #aacbe6;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* REMOVE THE UNDERLINE (scrollbar track) */
+  .table-scroll::-webkit-scrollbar {
+    height: 0px;      /* hides scrollbar completely */
+    background: transparent;
+  }
+
+  .table-scroll::-webkit-scrollbar-thumb {
+    background: transparent; /* no thumb */
+  }
+}

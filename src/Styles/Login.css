@@ -1,0 +1,286 @@
+/* App.css - reset + defensive overflow handling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+/* PAGE wrapper */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* important: prevent horizontal scroll */
+}
+
+/* PAGE wrapper - use vw to guarantee full viewport width */
+.page {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #0cb2ff 0%, #0aaaf5 100%);
+  font-family: "Inter", sans-serif;  /* updated */
+  color: #fff;
+}
+
+/* NAVBAR - keep inner content centered and capped */
+.navbar {
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center; /* center nav-inner */
+}
+.nav-inner {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* logo */
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* nav links */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  opacity: 0.95;
+  padding: 6px 8px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: scale(0.9); /* shrink */
+  opacity: 1;
+}
+.nav-btn.active { font-weight: 700; }
+
+/* CONTENT WRAP - ensures content is centered and never overflows */
+.content-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* padding: 4px; */
+}
+
+/* HERO area - capped width */
+.hero {
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px 20px 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* titles */
+.title {
+  font-size: clamp(24px, 5vw, 48px); /* responsive sizing */
+  font-weight: 800;
+  text-align: center;
+  margin-top: 18px;
+  line-height: 1.05;
+  padding: 0 10px;
+}
+
+.subtitle {
+  font-size: clamp(12px, 1.4vw, 16px);
+  margin-top: 14px;
+  opacity: 0.95;
+  text-align: center;
+  max-width: 760px;
+}
+
+/* LOGIN CARD - responsive center card */
+.login-card {
+  width: 100%;
+  max-width: 480px; /* increased max width */
+  background: #ffffff;
+  color: #222;
+  border-radius: 18px;
+  padding: 28px;
+  margin-top: 36px;
+  box-shadow: 0 20px 40px rgba(4, 26, 46, 0.15);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* Mobile Fix */
+@media (max-width: 600px) {
+  .login-card {
+    max-width: 95%;
+    width: 95%;
+    padding: 22px;
+    margin: 20px auto;
+  }
+}
+input, textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px; /* important for iOS zoom fix */
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+  background: #fff;
+
+  /* Smooth shadow */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+  /* Prevent weird zoom on iPhone */
+  -webkit-text-size-adjust: 100%;
+}
+
+input:focus, textarea:focus {
+  border-color: #0cb2ff;
+  box-shadow: 0 0 8px rgba(0, 174, 255, 0.3);
+}
+
+
+/* forms inside card */
+.input-group {
+  margin-bottom: 16px;
+}
+.input-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #333;
+}
+.input-group input {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid #d9d5d5;
+  font-size: 15px;
+  outline: none;
+}
+
+/* between row */
+.between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+.remember { display:flex; gap:8px; align-items:center; color:#333; font-size:13px; }
+.forgot { color:#0b86d6; font-size:13px; text-decoration:none; }
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.checkbox-wrapper input {
+  display: none; /* hide default checkbox */
+}
+
+.custom-box {
+  width: 14px;
+  height: 14px;
+  border: 2px solid white; /* white border */
+  border-radius: 3px;
+  background: white;        /* always white when unchecked */
+  position: relative;
+}
+
+.checkbox-wrapper input:checked + .custom-box {
+  background: #2563eb;      /* blue when checked (you can change) */
+  border-color: #2563eb;
+}
+
+.checkbox-wrapper input:checked + .custom-box::after {
+  content: "✔";
+  color: white;
+  font-size: 10px;
+  position: absolute;
+  top: -1px;
+  left: 2px;
+}
+
+/* Buttons */
+.signin-btn {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(180deg,#06a7f5,#0497e9);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signup-text {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+}
+.google-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid #09a2e8;
+  background: transparent;
+  color: #0a86d6;
+}
+
+/* Floats (positioned images) - must not cause overflow */
+.float {
+  position: absolute;
+  pointer-events: none;
+  max-width: 16vw;
+  width: clamp(48px, 10vw, 120px);
+  height: auto;
+  transform: translateZ(0);
+}
+
+/* example positions - tuned to never overflow */
+.emoji1 { left: 18px; top: 28vh; }
+.emoji2 { right: 28px; bottom: 6vh; }
+.rating { right: 6vw; top: 16vh; width: clamp(56px, 8vw, 140px); }
+
+/* ------------------ RESPONSIVE ------------------ */
+@media (max-width: 1024px) {
+  .nav-inner { padding: 0 8px; }
+  .emoji1 { left: 8px; top: 34vh; width: clamp(44px, 10vw, 90px); }
+  .rating { right: 4vw; top: 14vh; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { gap: 10px; font-size: 13px; }
+  .title { font-size: clamp(20px, 7vw, 34px); }
+  .hero { padding-bottom: 40px; }
+  .login-card { padding: 18px; margin-top: 26px; }
+  .emoji1 { left: -8px; top: 50vh; width: 60px; }
+  .emoji2 { right: -8px; bottom: -2vh; width: 60px; }
+  .rating { display: none; } /* hide if it overlaps */
+}
+.error-text {
+  color: #ff3d3d;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 500;
+}

@@ -1,0 +1,5 @@
+- [x] Create ProtectedRoute.jsx component
+- [x] Update App.jsx to import ProtectedRoute
+- [x] Wrap protected routes (/homepage, /orderpage, /addfunds) with ProtectedRoute
+- [ ] Test the app to ensure protected routes redirect unauthenticated users to login
+- [ ] Verify logout clears localStorage and redirects properly
